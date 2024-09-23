@@ -27,9 +27,17 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+
 MFA_SUPPORTED_TYPES = ["webauthn"]
 MFA_PASSKEY_LOGIN_ENABLED = True
 MFA_WEBAUTHN_ALLOW_INSECURE_ORIGIN = True
+MFA_PASSKEY_SIGNUP_ENABLED = True
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_EMAIL_VERIFICATION = "mandatory"
+ACCOUNT_EMAIL_VERIFICATION_BY_CODE_ENABLED = True
+ACCOUNT_AUTHENTICATION_METHOD = "email"
+ACCOUNT_USERNAME_REQUIRED = False
 
 AUTHENTICATION_BACKENDS = [
     # Needed to login by username in Django admin, regardless of `allauth`
@@ -48,6 +56,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "passkeyme",
     "allauth",
     "allauth.account",
     "allauth.mfa",

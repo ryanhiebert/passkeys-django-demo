@@ -1,2 +1,2 @@
 django
-django-allauth[mfa]
+-e git+https://codeberg.org/allauth/django-allauth@main#egg=django-allauth[mfa]

@@ -17,9 +17,13 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path, include
+from django.conf import settings
+from django.views.generic import RedirectView
 import allauth.urls
 
 urlpatterns = [
+    path("", RedirectView.as_view(url=settings.LOGIN_URL)),
     path("admin/", admin.site.urls),
-    path("accounts/", include(allauth.urls))
+    path("accounts/signup/", RedirectView.as_view(url="/accounts/signup/passkey/")),
+    path("accounts/", include(allauth.urls)),
 ]
